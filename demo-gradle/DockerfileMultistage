@@ -1,0 +1,10 @@
+FROM gradle:7.6-jdk AS builder
+WORKDIR /demo-gradle
+COPY . .
+RUN gradle build -x test
+
+FROM openjdk:17-slim
+WORKDIR /app
+COPY --from=builder /demo-gradle/build/libs/*.jar app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]

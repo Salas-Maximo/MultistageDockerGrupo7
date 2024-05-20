@@ -8,6 +8,6 @@ public class HolaMundo {
 
     @GetMapping("/")
     public String hello() {
-        return "hello"; // Thymeleaf will resolve this to "hello.html" in the templates directory
+        return "hello";//hello.html
     }
 }
